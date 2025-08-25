@@ -42,6 +42,15 @@
     Per la divisione controllare se il valore inserito è 0 e far uscire un alert nel caso si trovi 0
     -->
 
+    <h3>Soluzione</h3>
+    <div>
+        Num 1 <input type="text" id="num1"><br>
+        Num 2 <input type="text" id="num2"><br>
+        <button id="somma">+</button> <button id="sot">-</button> <button id="divi">/</button> <button id="molt">*</button>
+    </div>
+
+    <div id="ris_es"></div>
+
 <!--
 Di solito inserisco il JS alla fine della pagina
 -->
@@ -55,6 +64,15 @@ Di solito inserisco il JS alla fine della pagina
     const nome = document.getElementById("nome");
     const numero = document.getElementById("numero");
     const doppio = document.getElementById("ris_doppio");
+
+    //Esercizio
+    const num1 = document.getElementById("num1");
+    const num2 = document.getElementById('num2');
+    const somma = document.getElementById("somma");
+    const sot = document.getElementById("sot");
+    const divi = document.getElementById("divi");
+    const molt = document.getElementById("molt");
+    const ris_es = document.getElementById("ris_es");
   
 
     console.log("Ciao da JS");
@@ -81,6 +99,26 @@ Di solito inserisco il JS alla fine della pagina
     })
 
 
+    //Esercizio
+    somma.addEventListener("click", ()=>{
+        ris_es.innerHTML = "Il risultato della somma è: "+ (Number(num1.value) + Number(num2.value));
+    })
+
+    sot.addEventListener("click", ()=>{
+        ris_es.innerHTML = "Il risultato della sottrazione è: "+ (Number(num1.value) - Number(num2.value));
+    })
+
+    molt.addEventListener("click", ()=>{
+        ris_es.innerHTML = "Il risultato della moltiplicazione è: "+ (Number(num1.value) * Number(num2.value));
+    })
+
+    divi.addEventListener("click", ()=>{
+        if(num2.value == 0){
+            alert("Non puoi dividere per 0");
+        }else{
+            ris_es.innerHTML = "Il risultato della divisione è: "+ (Number(num1.value) / Number(num2.value));
+        }
+    })
     
 </script>
 </body>
