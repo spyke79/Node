@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titolo Pagina Esempio</title>
+    <style>
+        h1{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sono il titolo</h1>
+    <p>Sono il primo paragrafo</p>
+
+    <div id="testo">Sono il contenuto del div</div>
+
+    <div>
+        <button id="btn">Premi</button>
+        <button id="btn2">Conta</button>
+    </div>
+    
+
+    <h2>Esempio input da pagina HTML</h2>
+    <div>
+        Nome: <input type="text" id="nome"> <button id="btn3">Invia</button>
+    </div>
+
+    <h3>Esempio numeri</h3>
+    <p>Inserisci un numero e te lo raddoppio</p>
+    <div>
+        Numero <input type="text" id="numero"> <button id="btn4">Duplica</button>
+        <p>Risultato</p>
+        <div id="ris_doppio"></div>
+    </div>
+
+    <!--
+    Crea due input di testo per simulare una calcolatrice.
+    A sencondo del pulsante premuto mi fare o la somma o la divisione o la motiplicazione o la sottrazione dei due campi
+    Per la divisione controllare se il valore inserito è 0 e far uscire un alert nel caso si trovi 0
+    -->
+
+<!--
+Di solito inserisco il JS alla fine della pagina
+-->
+<script>
+    //Scrivo in JS
+    const testo = document.getElementById("testo");
+    const btn = document.getElementById("btn");
+    const btn2 = document.getElementById("btn2");
+    const btn3 = document.getElementById("btn3");
+    const btn4 = document.getElementById("btn4");
+    const nome = document.getElementById("nome");
+    const numero = document.getElementById("numero");
+    const doppio = document.getElementById("ris_doppio");
+  
+
+    console.log("Ciao da JS");
+    console.log(testo.innerHTML)
+    //Cambio il contenuto del div con id testo
+    btn.addEventListener("click", ()=>{
+        testo.innerHTML = "Div scritto da JS";
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+    })
+
+    btn2.addEventListener("click", ()=>{
+        for(var i = 1; i <= 10; i++){
+            testo.innerHTML += "<br>" + i;
+        }
+    })
+
+    btn3.addEventListener("click", ()=>{
+        alert(nome.value)
+    })
+
+    btn4.addEventListener("click", ()=>{
+        doppio.innerHTML = numero.value * 2;
+    })
+
+
+    
+</script>
+</body>
+</html>
