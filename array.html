@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <h1>Array</h1>
+
+    <p>Risultato</p>
+    <div id="ris"></div>
+
+    <div>
+        Cova vuoi aggiungere?<br>
+        Numeri <input type="checkbox" id="s_numeri" checked> Lettere minuscole <input type="checkbox" id="s_min"> Lettere Maiuscole <input type="checkbox" id="s_mai">
+        <br><button id="btn">Scegli</button>
+    </div>
+
+    <script>
+
+        const btn = document.getElementById("btn");
+        const s_numeri = document.getElementById("s_numeri");
+        const s_min = document.getElementById("s_min");
+        const s_mai = document.getElementById("s_mai");
+
+        let numeri = "0123456789";
+        let minuscole = "abcdefghijklmnopqrstuvwxyz";
+        let maiuscole = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
+
+
+        btn.addEventListener("click", ()=>{
+            let pwd = ""; //Resetto la vecchia scelta
+            if(s_numeri.checked == true){
+                pwd += numeri;
+            }
+
+            if(s_min.checked == true){
+                pwd += minuscole
+            }
+
+            if(s_mai.checked == true){
+                pwd += maiuscole
+            }
+
+            console.log(pwd);
+        })
+        
+
+        const ris = document.getElementById("ris");
+
+        let numeriPrimi = [2,3,7,11,34];
+        let arMisto = [1, "Michle", true, [24,"Pasquale"]];
+
+        console.log(numeriPrimi)
+        console.log(numeriPrimi[1])
+
+        console.log(arMisto)
+        console.log(arMisto[3][1])
+
+
+        //Stampare il contenuto di un Array
+        numeriPrimi.forEach(el =>{
+            console.log(el)
+        })
+
+        //Classico
+        for(var i = 0; i <numeriPrimi.length; i++){
+            console.log(numeriPrimi[i])
+        }
+
+        //Random in JS
+        ris.innerHTML = Math.floor(Math.random() * 100);
+
+        //Per prendere un elemento random di un array
+        let arNumeri = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,;:!?./§»~#{[|`\^@]}&";
+
+        ris.innerHTML = arNumeri.charAt(Math.floor(Math.random() * arNumeri.length))
+        
+    </script>
+</body>
+</html>
