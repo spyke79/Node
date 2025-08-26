@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteo</title>
+    <!--CSS BootStrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Meteo Personale</h2>
+        <table>
+            <tr>
+                <td>Inserisci la città:</td>
+                <td><input type="text" id="citta"><br></td>
+            </tr>
+            <tr align="center">
+                <td colspan="2"><button type="button" class="btn btn-primary" id="btn">Invio</button> </td>
+            </tr>
+        </table>
+        <div id="ris"></div>
+    </div>
+
+    <!--JS BootStrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script>
+        const btn = document.getElementById("btn");
+        const citta = document.getElementById("citta");
+        const ris = document.getElementById("ris");
+
+        btn.addEventListener("click", () => {
+            let appID = '441385b0c3c2f677c999eb1456b58a35';
+
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${citta.value}&appid=${appID}&lang=it&units=metric`;
+
+            console.log(url);
+
+            //Recupero le informazioni e le salvo su una variabile
+            fetch(url)
+                .then((res) => res.json()) //Dopo che hai letto l'url trasforma la risposta in json()
+                .then((data) => {
+                    //Leggo i dati
+                    ris.innerHTML = "<b>Descrizione:</b> " + data.weather[0].description + "<br>";
+                    ris.innerHTML += "<b>Temperatura:</b>" + data.weather[0].description + "<br>";
+                    ris.innerHTML += "Minima e massima, velocità vento<br>";
+                    ris.innerHTML += `<b>Immagine:</b><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
+                })
+        })
+
+
+
+        //Prendiamo latitudine e longitudine dal Browser dell'utente
+        //Controliamo se il browser supporta la geolocalizzazione
+        if (navigator.geolocation) {
+            console.log("Il browser supporta la geolocalizzazione");
+
+            //Chiamo il metodo e gli passo la funzione da eseguire in caso di successo
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    let lat = position.coords.latitude;
+                    let lon = position.coords.longitude;
+
+                    console.log("Lat: " + lat + " Lon: " + lon);
+                }
+            );
+        } else {
+            console.log("Browser Obsoleto");
+        }
+
+
+    </script>
+</body>
+
+</html>

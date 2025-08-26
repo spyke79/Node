@@ -7,7 +7,13 @@ fetch(url)
 
         //Dato che è un array ha la proprietà forEach
         data.forEach(el => {
-            console.log("Titolo: " + el.title)
+            if(el.completed == true){
+                console.log("Titolo: " + el.title)
+            }
         });
 
-    })
+        
+
+    }) //Chiudo il then di data
+
+console.log("Fine della lettura")

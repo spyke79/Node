@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+</head>
+<body>
+    
+    <h1>HTML</h1>
+
+    <h5>Le Liste</h5>
+    <!--Lista Ordinata-->
+    <ol type="1" start="5" reversed>
+        <li>Uno</li>
+        <li>Due</li>
+        <li>Tre</li>
+    </ol>
+
+    <!--Lista non Ordinata-->
+    <ul type="square">
+        <li>uno</li>
+        <li>deu</li>
+        <li>tre</li>
+    </ul>
+
+    <h5>Tabelle</h5>
+
+    <table border="1">
+        <tr>
+            <th>Int 1</th>
+            <th>Int 2</th>
+            <th>Int 3</th>
+            <th>Int 4</th>
+        </tr>
+        <tr>
+            <td>Uno</td>
+            <td>Due</td>
+            <td>extra</td>
+            <td rowspan="2">extra 2</td>
+        </tr>
+        <tr>
+            <td>tre</td>
+            <td colspan="2">quattro</td>
+        </tr>
+    </table>
+
+    <h5>Link</h5>
+    <p>
+        Link che sostituisce la pagina aperta <a href="http://www.google.com">Google</a><br>
+        Link che apre una nuova scheda <a href="http://www.google.com" target="_blank">Google</a>
+    </p>
+
+    <h5>Inserimento Media</h5>
+    <p>
+        <img src="https://imgs.search.brave.com/86N2QWdQe3u0JvnRJJ9ACpgN9o2KMNUuBr7hjQKpvRI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90b3Bk/ZXYudm4vYmxvZy93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMC8w/OS9odG1sNS0yMTh4/MTUwLmpwZw" 
+        alt="Descrizione immagine quando non viene caricata" 
+        title="Il pop up che descrive l'immagine"
+        width="50%">
+    </p>
+
+    <h5>Caselle di controllo dei form</h5>
+    <form method="get" action="#">
+        user: <input type="text" name="user" id="user"><br>
+        pwd: <input type="password" name="pwd"><br>
+        <p>Radio Scelta singola</p>
+        <h6>Primi</h6> 
+        Pasta <input type="radio" name="scelta_1" value="pasta"><br>
+        Spaghetti <input type="radio" name="scelta_1" value="spaghetti"><br>
+        Lasagna <input type="radio" name="scelta_1" value="lasagna"><br>
+        <h6>Secondi</h6>
+        Carne <input type="radio" name="secondi" value="carne"><br>
+        Pesce <input type="radio" name="secondi" value="pesce"><br>
+        Mozzarella <input type="radio" name="secondi" value="mozzarella"><br>
+
+        <h6>Aggiungi opzioni</h6>
+        Olio <input type="checkbox" name="opz[]" value="olio"><br>
+        Pomodoro <input type="checkbox" name="opz[]" value="pomodoro"><br>
+        Insalata <input type="checkbox" name="opz[]" value="Insalata"><br>
+
+        <input type="submit">
+    </form>
+
+</body>
+</html>
