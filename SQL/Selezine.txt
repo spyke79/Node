@@ -1,0 +1,7 @@
+https://www.w3schools.com/sql/sql_select.asp
+
+LA sintassi è:
+
+SELECT <campi da selezionare>
+FROM <tabelle di riferimento dove si trovano i campi>
+WHERE <opzionale> condizione per la selezione
