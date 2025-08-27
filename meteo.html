@@ -38,7 +38,7 @@
         btn.addEventListener("click", () => {
             let appID = '441385b0c3c2f677c999eb1456b58a35';
 
-            let url = `https://api.openweathermap.org/data/2.5/weather?q=${citta.value}&appid=${appID}&lang=it&units=metric`;
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${citta.value.trim().toLowerCase()}&appid=${appID}&lang=it&units=metric`;
 
             console.log(url);
 
@@ -47,31 +47,56 @@
                 .then((res) => res.json()) //Dopo che hai letto l'url trasforma la risposta in json()
                 .then((data) => {
                     //Leggo i dati
-                    ris.innerHTML = "<b>Descrizione:</b> " + data.weather[0].description + "<br>";
-                    ris.innerHTML += "<b>Temperatura:</b>" + data.weather[0].description + "<br>";
-                    ris.innerHTML += "Minima e massima, velocità vento<br>";
+                    ris.innerHTML = "<b>Città:</b> " + data.name + "<br>";
+                    ris.innerHTML += "<b>Descrizione:</b> " + data.weather[0].description + "<br>";
+                    ris.innerHTML += "<b>Temperatura:</b> " + data.main.temp + "°<br>";
+                    ris.innerHTML += "<b>Temperatura minima:</b> " + data.main.temp_min + "°<br>";
+                    ris.innerHTML += "<b>Temperatura Massima:</b> " + data.main.temp_max + "°<br>";
+                    ris.innerHTML += "<b>Umidità:</b> " + data.main.humidity + "%" + "<br>";
                     ris.innerHTML += `<b>Immagine:</b><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
                 })
         })
 
 
 
-        //Prendiamo latitudine e longitudine dal Browser dell'utente
-        //Controliamo se il browser supporta la geolocalizzazione
+        // Prima, controlliamo se il browser supporta la geolocalizzazione
         if (navigator.geolocation) {
-            console.log("Il browser supporta la geolocalizzazione");
+            console.log("Il browser supporta la geolocalizzazione.");
 
-            //Chiamo il metodo e gli passo la funzione da eseguire in caso di successo
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    let lat = position.coords.latitude;
-                    let lon = position.coords.longitude;
+            // Chiamiamo il metodo e gli passiamo il nome della funzione 
+            // da eseguire in caso di successo.
+            navigator.geolocation.getCurrentPosition(mostraPosizione);
 
-                    console.log("Lat: " + lat + " Lon: " + lon);
-                }
-            );
         } else {
-            console.log("Browser Obsoleto");
+            console.log("Il browser non supporta la geolocalizzazione.");
+        }
+
+        // Questa è la funzione che viene eseguita se l'utente accetta
+        function mostraPosizione(posizione) {
+            // L'oggetto 'posizione' contiene tutte le informazioni
+            const latitudine = posizione.coords.latitude;
+            const longitudine = posizione.coords.longitude;
+
+            console.log("Posizione ottenuta con successo!");
+            console.log(`Latitudine: ${latitudine}`);
+            console.log(`Longitudine: ${longitudine}`);
+
+            let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitudine}&lon=${longitudine}&appid=441385b0c3c2f677c999eb1456b58a35&lang=it&units=metric`;
+
+            fetch(url)
+                .then((res) => res.json()) //Dopo che hai letto l'url trasforma la risposta in json()
+                .then((data) => {
+                    //Leggo i dati
+                    ris.innerHTML = "<b>Città:</b> " + data.name + "<br>";
+                    ris.innerHTML += "<b>Descrizione:</b> " + data.weather[0].description + "<br>";
+                    ris.innerHTML += "<b>Temperatura:</b> " + data.main.temp + "°<br>";
+                    ris.innerHTML += "<b>Temperatura minima:</b> " + data.main.temp_min + "°<br>";
+                    ris.innerHTML += "<b>Temperatura Massima:</b> " + data.main.temp_max + "°<br>";
+                    ris.innerHTML += "<b>Umidità:</b> " + data.main.humidity + "%" + "<br>";
+                    ris.innerHTML += `<b>Immagine:</b><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
+                })
+
+
         }
 
 
