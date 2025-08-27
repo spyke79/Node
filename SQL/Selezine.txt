@@ -5,3 +5,16 @@ LA sintassi è:
 SELECT <campi da selezionare>
 FROM <tabelle di riferimento dove si trovano i campi>
 WHERE <opzionale> condizione per la selezione
+
+SELECT id, cognome 
+FROM utenti 
+WHERE nome="michele"
+
+
+https://www.w3schools.com/sql/sql_insert.asp
+INSER INTO <tabell> (Inserisco i valori se non ricordo l'ordine nella tabell)
+    VALUES(valori da inserirr)
+
+
+INSERT INTO utenti 
+VALUES(null,"mario","bianchi")
