@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti Utente</title>
+    <!--CSS BootStrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contatti Utente</h1>
+    </div>
+
+
+    <!--JS BootStrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const queryString = window.location.search; //Prendo la query string dall'url
+
+        console.log(queryString); //Stampa la query string
+
+        //Crea un oggetto URLSearchParams per gestire i parametri della query string
+        const urlParams = new URLSearchParams(queryString);
+
+        //Ora posso leggere i valori dei parametri e assegnarli a delle variabili
+        const id_u = urlParams.get('id_u'); //Prendo il valore del parametro id_u
+        console.log("Id in url è: " + id_u); //Stampa il valore del parametro id_u
+
+        //Esercizio
+        /*
+        Usando l'id recuperato dalla query string fare una chiamata fetch alla root per 
+        recuperare i contatti dell'utente selezionato e stamparli a video
+        es di api è: http://localhost:3000/api/contatti?id_u=2
+        */
+    </script>
+    
+</body>
+</html>

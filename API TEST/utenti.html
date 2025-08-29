@@ -11,8 +11,11 @@
 </head>
 
 <body>
-    <h1>Lista Utenti</h1>
-    <div id="ris"></div>
+    <div class="container">
+        <h1>Lista Utenti</h1>
+        <div id="ris"></div>
+    </div>
+
 
 
     <!--JS BootStrap-->
@@ -32,10 +35,10 @@
                 console.log(data); //Stampa i dati ricevuti dal server
                 ris.innerHTML = ""; //Pulisce il div ris
                 data.forEach(utente => {
-                    ris.inerHTML += "ID: " + utente.id + "<br>"; //Stampa una linea di separazione tra un utente e l'altro
+                    ris.innerHTML += "ID: " + utente.id + "<br>"; //Stampa una linea di separazione tra un utente e l'altro
                     ris.innerHTML += "Nome: " + utente.nome + "<br>"; //Stampa il nome di ogni utente 
                     ris.innerHTML += "Cognome: " + utente.cognome + "<br>" //Stampa il cognome di ogni utente
-                    ris.inerHTML += "ID: " + utente.id + "<br>";
+                    ris.innerHTML += "<a href='contattiUtenre.html?id_u="+ utente.id +"'>Contatti dell'utenti</a><br>"; //Stampa l'email di ogni utente
                     ris.innerHTML += "<hr><br><br>";
                 });
             })

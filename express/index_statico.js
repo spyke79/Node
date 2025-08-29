@@ -44,6 +44,16 @@ app.get('/api/utenti', (req,res) => {
     });
 })
 
+app.get('/api/utenti/:id', (req,res) =>{
+    console.log(req.params.id);//Leggo il parametro id della url
+    let id = req.params.id; //Salvo il parametro id preso dall'url in una variabile
+    //Vado a creare la query con WHERE e sostituire l'id a senconda di quello passato tramite url
+    con.query("SELECT * FROM utenti WHERE id = ?", [id], (err, result) => {
+        if(err) throw err; //se c'è un errore lo stampo
+        res.json(result); //mando il risultato al client in formato json
+    })
+});
+
 
 app.listen(PORT);
 console.log(`Server in esecuzione sulla porta ${PORT}`);
