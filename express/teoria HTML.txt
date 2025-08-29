@@ -1,0 +1,8 @@
+Comu funziona il WEB
+
+Metodi HTTP
+
+GET = leggere dati
+POST = inviare dati
+PUT = modificare dati
+DELETE = eliminare dati
