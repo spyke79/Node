@@ -16,10 +16,5 @@ con.connect((err) => {
 });
 
 
-//Facico una query di selezione per vedere se riesco a leggere i dati
-con.query("SELECT * FROM utenti", (err, result) => { //query(stringa sql, funzione di callback che mi restituisce errore e risultato)
-    if(err) throw err; //se c'è un errore lo stampo
-    console.log(result); //se non c'è errore stampo il risultato
-});
 
 module.exports = con; //Esporto la connessione per poterla usare in altri file
